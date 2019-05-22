@@ -141,9 +141,19 @@ revenue12 = revenue11[revenue11['both'] != 'both']
 revenue12 = revenue12[revenue12['# Transactions'] > 0]
 print(revenue12.head())
 
+import statsmodels.api as statsmodels
+def regress (data, yvar, xvars):
+    Y = data[yvar]
+    X = data[xvars]
+    X['intercept'] = 1
+    result = sm.OLS(Y,X).fit()
+    return result.params
+
 ffCurrent = revenue12[(revenue12['current']==True) & (revenue12['Product']=='FraudFinder')]
 print("\n", "**ffCurrent**")
 print(ffCurrent.head())
+
+ffCurrent2 = ffCurrent['Cust_ID'].groupby([revenue02['Cust_ID']])
 
 ffFormer = revenue12[(revenue12['current']==False) & (revenue12['Product']=='FraudFinder')]
 print("\n", "**ffFormer**")
