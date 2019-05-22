@@ -142,11 +142,18 @@ revenue12 = revenue12[revenue12['# Transactions'] > 0]
 print(revenue12.head())
 
 import statsmodels.api as statsmodels
+import math
+# import scipy.misc
+# from scipy.misc import factorial
+# from scipy.misc.common import factorial
+# import scipy.special
+
+
 def regress (data, yvar, xvars):
     Y = data[yvar]
     X = data[xvars]
     X['intercept'] = 1
-    result = sm.OLS(Y,X).fit()
+    result = statsmodels.OLS(Y,X).fit()
     return result.params
 
 ffCurrent = revenue12[(revenue12['current']==True) & (revenue12['Product']=='FraudFinder')]

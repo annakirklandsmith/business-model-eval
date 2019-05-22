@@ -6,6 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+pandas = "*"
+import-ipynb = "*"
+xlrd = "*"
+numpy = "*"
+openpyxl = "*"
+statsmodels = "*"
+scipy = "*"
+install = "*"
 
 [requires]
 python_version = "3.7"
